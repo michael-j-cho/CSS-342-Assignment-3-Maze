@@ -21,6 +21,7 @@ private:
 public:
   explicit Maze(const string &FileName);
   bool isClear(int Row, int Col) const;
+  bool hasVisited(int Row, int Col) const;
   void markAsPath(int Row, int Col);
   void markAsVisited(int Row, int Col);
   int getExitRow() const;

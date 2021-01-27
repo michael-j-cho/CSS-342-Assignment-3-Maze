@@ -56,6 +56,9 @@ bool Maze::isClear(int Row, int Col) const {
   return Field[Row][Col] == ' ';
 }
 
+bool Maze::hasVisited(int Row, int Col) const {
+  return Field[Row][Col] == '*';
+}
 void Maze::markAsPath(int Row, int Col) {
   Field[Row][Col] = '*';
 }
