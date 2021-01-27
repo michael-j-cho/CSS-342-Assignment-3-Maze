@@ -24,6 +24,7 @@ public:
   string goSouth(Maze &Maze);
   string goEast(Maze &Maze);
   string goWest(Maze &Maze);
+  void checkDirection(Maze &Maze);
 };
 
 #endif //ASS3_CREATURE_H

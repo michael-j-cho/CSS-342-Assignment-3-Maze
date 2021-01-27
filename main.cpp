@@ -6,8 +6,9 @@
 
 void test() {
     Maze M("maze.txt");
-    // cout << m << endl;
+    // cout << M << endl;
     Creature C(4, 4);
+    // cerr << C << endl;
     cout << "Path: " << C.solve(M) << endl;
     cout << M << endl;
 }
