@@ -1,0 +1,9 @@
+60 7
+6 1
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+x             xxxx          x xxxxxxxxxxxxxxxxxxxxx xxxxxxxx
+x xxxxx xxxxx   xx xxxxxxxx x         xxxxxxxxx   x  xxxxxxx     
+x xxxxx xxxxxxx xx x          xxxxxxx xx        x x       xx  
+x x          xx xx xxxxxxxxxx x       xxxxxx xxxx xxxxxxx xx
+x xxxxxxxxxx xx    x          x xxxxx        xxxx         xx
+x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

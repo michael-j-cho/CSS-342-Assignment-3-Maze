@@ -4,6 +4,7 @@
 
 #include "creature.h"
 #include <iostream>
+using namespace std;
 
 std::ostream &operator<<(std::ostream &Out, const Creature &Creature) {
   Out << "C(" << Creature.Row << "," << Creature.Col << ")";
@@ -13,91 +14,77 @@ std::ostream &operator<<(std::ostream &Out, const Creature &Creature) {
 Creature::Creature(int Row, int Col) : Row(Row), Col(Col) {}
 
 bool Creature::atExit(const Maze &Maze) const {
-  if(this->Row == Maze.getExitRow() && this->Col == Maze.getExitColumn()) {
-    return true;
-  }
-  return false;
+  return this->Row == Maze.getExitRow() && this->Col == Maze.getExitColumn();
 }
 
+
 string Creature::solve(Maze &Maze) {
-  //Starting location
-  // Maze.markAsPath(Row,Col);
-  checkDirection(Maze);
   string Path;
+  Maze.markAsPath(Row, Col);
+
+  // Base Case
+  if(atExit(Maze)){
+    return Path;
+  }
+
+  if(!atExit(Maze)){
+    if(Maze.isClear(Row - 1, Col)) {return goNorth(Maze);}
+    if(Maze.isClear(Row, Col + 1)) {return goEast(Maze);}
+    if(Maze.isClear(Row + 1, Col)) {return goSouth(Maze);}
+    if(Maze.isClear(Row, Col - 1)) {return goWest(Maze);}
+    
+    if(Maze.hasVisited(Row - 1, Col)) {return goNorth(Maze);}
+    if(Maze.hasVisited(Row, Col + 1)) {return goEast(Maze);}
+    if(Maze.hasVisited(Row + 1, Col)) {return goSouth(Maze);}
+    if(Maze.hasVisited(Row, Col - 1)) {return goWest(Maze);}
+  }
   return Path;
 }
 
 string Creature::goNorth(Maze &Maze) {
   if(Maze.isClear(Row - 1, Col)) {
-    Maze.markAsPath(Row, Col);
     this->Row--;
-    std::cout << "Up" << endl;
+    Maze.markAsPath(Row, Col);
   } 
   else if(Maze.hasVisited(Row - 1, Col)) {
     Maze.markAsVisited(Row, Col);
     this->Row--;
-    std::cout << "Up" << endl;
   }
-  checkDirection(Maze);
-  return "X";
+  return "N" + solve(Maze);
 }
 
 string Creature::goWest(Maze &Maze) {
   if(Maze.isClear(Row, Col - 1)) {
-    Maze.markAsPath(Row, Col);
     this->Col--;
-    std::cout << "Left" << endl;
+    Maze.markAsPath(Row, Col);
   } 
   else if (Maze.hasVisited(Row, Col -1)) {
     Maze.markAsVisited(Row, Col);
     this->Col--;
-    std::cout << "Left" << endl;
   }
-  checkDirection(Maze);
-  return "X";
+  return "W" + solve(Maze);
 }
 
 string Creature::goEast(Maze &Maze) {
   if(Maze.isClear(Row, Col + 1)) {
-    Maze.markAsPath(Row, Col);
     this->Col++;
-    std::cout << "Right" << endl;
+    Maze.markAsPath(Row, Col);
   } 
   else if (Maze.hasVisited(Row, Col + 1)) {
     Maze.markAsVisited(Row, Col);
     this->Col++;
-    std::cout << "Right" << endl;
   }
-  checkDirection(Maze);
-  return "X";
+  return "E" + solve(Maze);
 }
 
 string Creature::goSouth(Maze &Maze) {
   if(Maze.isClear(Row + 1, Col)) {
+    this->Row++;
     Maze.markAsPath(Row, Col);
-    this->Col--;
-    std::cout << "Down" << endl;
   } 
   else if(Maze.hasVisited(Row + 1, Col)) {
     Maze.markAsVisited(Row, Col);
-    this->Col--;
-    std::cout << "Down" << endl;
+    this->Row++;
   }
-  checkDirection(Maze);
-  return "X";
-}
-
-void Creature::checkDirection(Maze &Maze) {
-  std::cout << Maze << endl;
-  std::cout << this->Row << ":" << this->Col << endl;
-  if(Maze.isClear(Row, Col - 1)) {goWest(Maze);}
-  if(Maze.isClear(Row, Col + 1)) {goEast(Maze);}
-  if(Maze.isClear(Row + 1, Col)) {goSouth(Maze);}
-  if(Maze.isClear(Row - 1, Col)) {goNorth(Maze);}
-
-  if(Maze.hasVisited(Row, Col - 1)) {goWest(Maze);}
-  if(Maze.hasVisited(Row, Col + 1)) {goEast(Maze);}
-  if(Maze.hasVisited(Row + 1, Col)) {goSouth(Maze);}
-  if(Maze.hasVisited(Row - 1, Col)) {goNorth(Maze);}
-
+  return "S" + solve(Maze);
 }
