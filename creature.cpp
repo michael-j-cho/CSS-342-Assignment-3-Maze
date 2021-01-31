@@ -17,74 +17,101 @@ bool Creature::atExit(const Maze &Maze) const {
   return this->Row == Maze.getExitRow() && this->Col == Maze.getExitColumn();
 }
 
-
 string Creature::solve(Maze &Maze) {
-  string Path;
   Maze.markAsPath(Row, Col);
-
-  // Base Case
-  if(atExit(Maze)){
+  if (atExit(Maze)) {
     return Path;
   }
 
-  if(!atExit(Maze)){
-    if(Maze.isClear(Row - 1, Col)) {return goNorth(Maze);}
-    if(Maze.isClear(Row, Col + 1)) {return goEast(Maze);}
-    if(Maze.isClear(Row + 1, Col)) {return goSouth(Maze);}
-    if(Maze.isClear(Row, Col - 1)) {return goWest(Maze);}
-    
-    if(Maze.hasVisited(Row - 1, Col)) {return goNorth(Maze);}
-    if(Maze.hasVisited(Row, Col + 1)) {return goEast(Maze);}
-    if(Maze.hasVisited(Row + 1, Col)) {return goSouth(Maze);}
-    if(Maze.hasVisited(Row, Col - 1)) {return goWest(Maze);}
+  if (!atExit(Maze) && canMove(Maze)) {
+    if (Maze.isClear(Row - 1, Col)) {
+      Path.append(goNorth(Maze));
+    } else if (Maze.isClear(Row, Col + 1)) {
+      Path.append(goEast(Maze));
+    } else if (Maze.isClear(Row + 1, Col)) {
+      Path.append(goSouth(Maze));
+    } else if (Maze.isClear(Row, Col - 1)) {
+      Path.append(goWest(Maze));
+    }
+    solve(Maze);
+  }
+
+  if (!atExit(Maze) && !canMove(Maze)) {
+    Path.pop_back();
+    if (Maze.hasVisited(Row - 1, Col)) {
+      goNorth(Maze);
+    } else if (Maze.hasVisited(Row, Col + 1)) {
+      goEast(Maze);
+    } else if (Maze.hasVisited(Row + 1, Col)) {
+      goSouth(Maze);
+    } else if (Maze.hasVisited(Row, Col - 1)) {
+      goWest(Maze);
+    }
+    solve(Maze);
   }
   return Path;
 }
 
 string Creature::goNorth(Maze &Maze) {
-  if(Maze.isClear(Row - 1, Col)) {
+  if (Maze.isClear(Row - 1, Col)) {
     this->Row--;
     Maze.markAsPath(Row, Col);
-  } 
-  else if(Maze.hasVisited(Row - 1, Col)) {
+  } else if (Maze.hasVisited(Row - 1, Col)) {
     Maze.markAsVisited(Row, Col);
     this->Row--;
+    return "";
   }
-  return "N" + solve(Maze);
+  return "N";
 }
 
 string Creature::goWest(Maze &Maze) {
-  if(Maze.isClear(Row, Col - 1)) {
+  if (Maze.isClear(Row, Col - 1)) {
     this->Col--;
     Maze.markAsPath(Row, Col);
-  } 
-  else if (Maze.hasVisited(Row, Col -1)) {
+  } else if (Maze.hasVisited(Row, Col - 1)) {
     Maze.markAsVisited(Row, Col);
     this->Col--;
+    return "";
   }
-  return "W" + solve(Maze);
+  return "W";
 }
 
 string Creature::goEast(Maze &Maze) {
-  if(Maze.isClear(Row, Col + 1)) {
+  if (Maze.isClear(Row, Col + 1)) {
     this->Col++;
     Maze.markAsPath(Row, Col);
-  } 
-  else if (Maze.hasVisited(Row, Col + 1)) {
+  } else if (Maze.hasVisited(Row, Col + 1)) {
     Maze.markAsVisited(Row, Col);
     this->Col++;
+    return "";
   }
-  return "E" + solve(Maze);
+  return "E";
 }
 
 string Creature::goSouth(Maze &Maze) {
-  if(Maze.isClear(Row + 1, Col)) {
+  if (Maze.isClear(Row + 1, Col)) {
     this->Row++;
     Maze.markAsPath(Row, Col);
-  } 
-  else if(Maze.hasVisited(Row + 1, Col)) {
+  } else if (Maze.hasVisited(Row + 1, Col)) {
     Maze.markAsVisited(Row, Col);
     this->Row++;
+    return "";
   }
-  return "S" + solve(Maze);
+  return "S";
+}
+
+bool Creature::canMove(Maze &Maze) {
+  if (Maze.isClear(Row - 1, Col)) {
+    return true;
+  }
+  if (Maze.isClear(Row, Col + 1)) {
+    return true;
+  }
+  if (Maze.isClear(Row + 1, Col)) {
+    return true;
+  }
+  if (Maze.isClear(Row, Col - 1)) {
+    return true;
+  }
+  return false;
 }

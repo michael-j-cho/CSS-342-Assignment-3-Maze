@@ -2,9 +2,9 @@
 // Created by Yusuf Pisan on 4/18/18.
 //
 
+#include "maze.h"
 #include <fstream>
 #include <iostream>
-#include "maze.h"
 
 using namespace std;
 
@@ -41,28 +41,15 @@ Maze::Maze(const string &FileName) {
     }
     getline(InFile, Str);
   }
-
 }
 
-int Maze::getExitRow() const {
-  return ExitRow;
-}
+int Maze::getExitRow() const { return ExitRow; }
 
-int Maze::getExitColumn() const {
-  return ExitColumn;
-}
+int Maze::getExitColumn() const { return ExitColumn; }
 
-bool Maze::isClear(int Row, int Col) const {
-  return Field[Row][Col] == ' ';
-}
+bool Maze::isClear(int Row, int Col) const { return Field[Row][Col] == ' '; }
 
-bool Maze::hasVisited(int Row, int Col) const {
-  return Field[Row][Col] == '*';
-}
-void Maze::markAsPath(int Row, int Col) {
-  Field[Row][Col] = '*';
-}
+bool Maze::hasVisited(int Row, int Col) const { return Field[Row][Col] == '*'; }
+void Maze::markAsPath(int Row, int Col) { Field[Row][Col] = '*'; }
 
-void Maze::markAsVisited(int Row, int Col) {
-  Field[Row][Col] = '+';
-}
+void Maze::markAsVisited(int Row, int Col) { Field[Row][Col] = '+'; }

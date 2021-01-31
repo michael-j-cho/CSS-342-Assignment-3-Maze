@@ -15,6 +15,7 @@ public:
 private:
   int Row;
   int Col;
+  string Path;
 
 public:
   Creature(int Row, int Col);
@@ -24,6 +25,7 @@ public:
   string goSouth(Maze &Maze);
   string goEast(Maze &Maze);
   string goWest(Maze &Maze);
+  bool canMove(Maze &Maze);
 };
 
 #endif //ASS3_CREATURE_H
