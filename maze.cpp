@@ -43,13 +43,26 @@ Maze::Maze(const string &FileName) {
   }
 }
 
-int Maze::getExitRow() const { return ExitRow; }
+int Maze::getExitRow() const { 
+  return ExitRow; 
+}
 
-int Maze::getExitColumn() const { return ExitColumn; }
+int Maze::getExitColumn() const { 
+  return ExitColumn; 
+}
 
-bool Maze::isClear(int Row, int Col) const { return Field[Row][Col] == ' '; }
+bool Maze::isClear(int Row, int Col) const { 
+  return Field[Row][Col] == ' '; 
+}
 
-bool Maze::hasVisited(int Row, int Col) const { return Field[Row][Col] == '*'; }
-void Maze::markAsPath(int Row, int Col) { Field[Row][Col] = '*'; }
+bool Maze::hasVisited(int Row, int Col) const { 
+  return Field[Row][Col] == '*'; 
+}
 
-void Maze::markAsVisited(int Row, int Col) { Field[Row][Col] = '+'; }
+void Maze::markAsPath(int Row, int Col) { 
+  Field[Row][Col] = '*'; 
+}
+
+void Maze::markAsVisited(int Row, int Col) { 
+  Field[Row][Col] = '+'; 
+}
