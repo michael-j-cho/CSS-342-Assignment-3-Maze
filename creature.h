@@ -19,13 +19,13 @@ private:
 
 public:
   Creature(int Row, int Col);
-  string solve(Maze &Maze);
+  string solve(Maze* Maze);
   bool atExit(const Maze &Maze) const;
-  string goNorth(Maze &Maze);
-  string goSouth(Maze &Maze);
-  string goEast(Maze &Maze);
-  string goWest(Maze &Maze);
-  bool canMove(Maze &Maze);
+  string goNorth(Maze* Maze);
+  string goSouth(Maze* Maze);
+  string goEast(Maze* Maze);
+  string goWest(Maze* Maze);
+  bool canMove(Maze* Maze) const;
 };
 
 #endif //ASS3_CREATURE_H

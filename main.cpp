@@ -8,7 +8,7 @@ void test() {
   // cout << M << endl;
   Creature C(4, 4);
   // cerr << C << endl;
-  cout << "Path: " << C.solve(M) << endl;
+  cout << "Path: " << C.solve(&M) << endl;
   cout << M << endl;
 }
 
@@ -17,7 +17,7 @@ void test2() {
   // cout << M << endl;
   Creature C(4, 4);
   // cerr << C << endl;
-  cout << "Path: " << C.solve(M) << endl;
+  cout << "Path: " << C.solve(&M) << endl;
   cout << M << endl;
 }
 
@@ -26,7 +26,7 @@ void test3() {
   // cout << M << endl;
   Creature C(4, 4);
   // cerr << C << endl;
-  cout << "Path: " << C.solve(M) << endl;
+  cout << "Path: " << C.solve(&M) << endl;
   cout << M << endl;
 }
 
@@ -35,7 +35,7 @@ void test4() {
   // cout << M << endl;
   Creature C(4, 4);
   // cerr << C << endl;
-  cout << "Path: " << C.solve(M) << endl;
+  cout << "Path: " << C.solve(&M) << endl;
   cout << M << endl;
 }
 
