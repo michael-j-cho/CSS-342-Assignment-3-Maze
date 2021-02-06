@@ -1,6 +1,7 @@
 //
-// Created by Yusuf Pisan on 4/18/18.
-//
+// Michael Cho 2/5/21
+// CSS342
+// 
 
 #include "maze.h"
 #include <fstream>

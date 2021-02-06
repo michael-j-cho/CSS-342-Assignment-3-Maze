@@ -1,6 +1,7 @@
 //
-// Created by Yusuf Pisan on 4/18/18.
-//
+// Michael Cho 2/5/21
+// CSS342
+// 
 
 #ifndef ASS3_MAZE_H
 #define ASS3_MAZE_H

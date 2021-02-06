@@ -1,5 +1,13 @@
-#include <iostream>
+//
+// Michael Cho 2/5/21
+// CSS342
+// 
+// This is the main driver file. It is running four 
+// different test of four different mazes.
+//
 
+#include <iostream>
+#include <cassert>
 #include "creature.h"
 #include "maze.h"
 
@@ -10,6 +18,7 @@ void test() {
   // cerr << C << endl;
   cout << "Path: " << C.solve(&M) << endl;
   cout << M << endl;
+  assert(C.atExit(M));
 }
 
 void test2() {
@@ -19,6 +28,7 @@ void test2() {
   // cerr << C << endl;
   cout << "Path: " << C.solve(&M) << endl;
   cout << M << endl;
+  assert(C.atExit(M));
 }
 
 void test3() {
@@ -28,6 +38,7 @@ void test3() {
   // cerr << C << endl;
   cout << "Path: " << C.solve(&M) << endl;
   cout << M << endl;
+  assert(C.atExit(M));
 }
 
 void test4() {
@@ -37,6 +48,7 @@ void test4() {
   // cerr << C << endl;
   cout << "Path: " << C.solve(&M) << endl;
   cout << M << endl;
+  assert(C.atExit(M));
 }
 
 int main() {
