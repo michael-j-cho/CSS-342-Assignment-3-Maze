@@ -1,9 +1,8 @@
-//
-// Michael Cho 2/5/21
-// CSS342
-// 
-// Creature class header file
-//
+/** Michael Cho 2/5/21
+CSS342
+
+Creature class header file */
+
 
 #pragma once
 #ifndef ASS3_CREATURE_H

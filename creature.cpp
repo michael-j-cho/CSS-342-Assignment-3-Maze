@@ -1,17 +1,16 @@
-//
-// Michael Cho 2/5/21
-// CSS342
-// 
-// The creature class creates an object that navigates through the
-// maze object. This class has an overloaded << operator that prints
-// the location of the creature. There is also an atExit function
-// that returns a boolean is the creature is at the exit. The solve
-// function is a recursive function that initiates the movement of
-// the creature throughout the maze. It will first move towards empty
-// spaces, then if there are no clear spaces left and it is not at the
-// exit, it will backtrack to previously visited spaces. There are 
-// also functions for moving North, East, South, and West, as well
-// as a function for checking if the creature can move to an empty space.
+/** Michael Cho 2/5/21
+CSS342
+
+The creature class creates an object that navigates through the
+maze object. This class has an overloaded << operator that prints
+the location of the creature. There is also an atExit function
+that returns a boolean is the creature is at the exit. The solve
+function is a recursive function that initiates the movement of
+the creature throughout the maze. It will first move towards empty
+spaces, then if there are no clear spaces left and it is not at the
+exit, it will backtrack to previously visited spaces. There are
+also functions for moving North, East, South, and West, as well
+as a function for checking if the creature can move to an empty space. */
 
 #include "creature.h"
 #include <iostream>
@@ -39,14 +38,14 @@ bool Creature::atExit(const Maze &Maze) const {
 }
 
 /** Recursive function solve. Base case is when creature is at exit.
-First block of if/else statements move the creature while there are 
+First block of if/else statements move the creature while there are
 open paths available. If there are no open paths available, creature
 backtracks with the second block of if/else statements. In both blocks
 of if/else statements, there is a recursive call to solve(Maze).
 Precondition: None
 Postcondition: Recursively moves creature in different directions until
 it is at exit. Returns the Path string directions for the solution. */
-string Creature::solve(Maze* Maze) {
+string Creature::solve(Maze *Maze) {
   Maze->markAsPath(Row, Col);
   if (atExit(*Maze)) {
     return Path;
@@ -81,13 +80,13 @@ string Creature::solve(Maze* Maze) {
   return Path;
 }
 
-/** If path is clear, moves the creature North and marks path with 
-'*'. Else, if path is not clear and marked with '*', marks '+' in 
+/** If path is clear, moves the creature North and marks path with
+'*'. Else, if path is not clear and marked with '*', marks '+' in
 current spot and moves North over a previously visited spot '*'.
 Precondition: Row - 1 must be ' ' or '*'.
-Postcondition: Marks location and moves creature Row - 1. 
+Postcondition: Marks location and moves creature Row - 1.
 Only returns 'N' if spot is clear and hasn't been visited.*/
-string Creature::goNorth(Maze* Maze) {
+string Creature::goNorth(Maze *Maze) {
   if (Maze->isClear(Row - 1, Col)) {
     this->Row--;
     Maze->markAsPath(Row, Col);
@@ -99,13 +98,13 @@ string Creature::goNorth(Maze* Maze) {
   return "N";
 }
 
-/** If path is clear, moves the creature West and marks path with 
-'*'. Else, if path is not clear and marked with '*', marks '+' in 
+/** If path is clear, moves the creature West and marks path with
+'*'. Else, if path is not clear and marked with '*', marks '+' in
 current spot and moves West over a previously visited spot '*'.
 Precondition: Col - 1 must be ' ' or '*'.
-Postcondition: Marks location and moves creature Col - 1. 
+Postcondition: Marks location and moves creature Col - 1.
 Only returns 'W' if spot is clear and hasn't been visited.*/
-string Creature::goWest(Maze* Maze) {
+string Creature::goWest(Maze *Maze) {
   if (Maze->isClear(Row, Col - 1)) {
     this->Col--;
     Maze->markAsPath(Row, Col);
@@ -117,13 +116,13 @@ string Creature::goWest(Maze* Maze) {
   return "W";
 }
 
-/** If path is clear, moves the creature East and marks path with 
-'*'. Else, if path is not clear and marked with '*', marks '+' in 
+/** If path is clear, moves the creature East and marks path with
+'*'. Else, if path is not clear and marked with '*', marks '+' in
 current spot and moves East over a previously visited spot '*'.
 Precondition: Col + 1 must be ' ' or '*'.
 Postcondition: Marks location and moves creature Col + 1.
 Only returns 'E' if spot is clear and hasn't been visited. */
-string Creature::goEast(Maze* Maze) {
+string Creature::goEast(Maze *Maze) {
   if (Maze->isClear(Row, Col + 1)) {
     this->Col++;
     Maze->markAsPath(Row, Col);
@@ -135,13 +134,13 @@ string Creature::goEast(Maze* Maze) {
   return "E";
 }
 
-/** If path is clear, moves the creature South and marks path with 
-'*'. Else, if path is not clear and marked with '*', marks '+' in 
+/** If path is clear, moves the creature South and marks path with
+'*'. Else, if path is not clear and marked with '*', marks '+' in
 current spot and moves South over a previously visited spot '*'.
 Precondition: Row + 1 must be ' ' or '*'.
 Postcondition: Marks location and moves creature Row + 1.
 Only returns 'S' if spot is clear and hasn't been visited. */
-string Creature::goSouth(Maze* Maze) {
+string Creature::goSouth(Maze *Maze) {
   if (Maze->isClear(Row + 1, Col)) {
     this->Row++;
     Maze->markAsPath(Row, Col);
@@ -156,7 +155,7 @@ string Creature::goSouth(Maze* Maze) {
 /** Checks to see if adjacent spaces are clear.
 Precondition: None
 Postcondition: If space is clear in any direction, return true. */
-bool Creature::canMove(Maze* Maze) const {
+bool Creature::canMove(Maze *Maze) const {
   if (Maze->isClear(Row - 1, Col)) {
     return true;
   }
