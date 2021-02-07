@@ -17,7 +17,7 @@ using namespace std;
 
 /** Overloaded << operator displays current state of the maze
 with char pathways marked.
-Precondition: None.
+Precondition: Maze must be instantiated.
 Postcondition: Prints the maze on the screen. */
 ostream &operator<<(ostream &Out, const Maze &Maze) {
   for (int Row = 0; Row < Maze.Height; ++Row) {
@@ -55,12 +55,12 @@ Maze::Maze(const string &FileName) {
 }
 
 /** Returns the set exit row of the maze from the maze text file.
-Precondition: None.
+Precondition: Maze must be instantiated.
 Postcondition: Returns an integer row location. */
 int Maze::getExitRow() const { return ExitRow; }
 
 /** Returns the set exit column of the maze from the maze text file.
-Precondition: None.
+Precondition: Maze must be instantiated.
 Postcondition: Returns an integer column location. */
 int Maze::getExitColumn() const { return ExitColumn; }
 

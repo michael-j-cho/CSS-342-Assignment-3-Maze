@@ -1,42 +1,11 @@
-Fri Feb  5 22:53:56 PST 2021
+Sat Feb  6 16:09:34 PST 2021
 *** compiling with clang++ to create an executable called myprogram
 clang version 7.0.1 (tags/RELEASE_701/final)
 Target: x86_64-unknown-linux-gnu
 Thread model: posix
 InstalledDir: /opt/rh/llvm-toolset-7.0/root/usr/bin
-*** running clang-tidy using options from .clang-tidy
-LLVM (http://llvm.org/):
-  LLVM version 7.0.1
-  Optimized build.
-  Default target: x86_64-unknown-linux-gnu
-  Host CPU: broadwell
-6641 warnings generated.
-13294 warnings generated.
-20685 warnings generated.
-/home/NETID/mikec87/C++/CSS342/ass3-maze/maze.cpp:25:14: warning: do not use array subscript when the index is not an integer constant expression; use gsl::at() instead [cppcoreguidelines-pro-bounds-constant-array-index]
-      Out << Maze.Field[Row][Col];
-             ^
-/home/NETID/mikec87/C++/CSS342/ass3-maze/maze.cpp:36:1: warning: constructor does not initialize these fields: Field, Width, Height, ExitRow, ExitColumn [cppcoreguidelines-pro-type-member-init]
-Maze::Maze(const string &FileName) {
-^
-/home/NETID/mikec87/C++/CSS342/ass3-maze/maze.cpp:51:18: warning: do not use array subscript when the index is not an integer constant expression; use gsl::at() instead [cppcoreguidelines-pro-bounds-constant-array-index]
-      InFile.get(Field[Row][Col]);
-                 ^
-/home/NETID/mikec87/C++/CSS342/ass3-maze/maze.cpp:70:53: warning: do not use array subscript when the index is not an integer constant expression; use gsl::at() instead [cppcoreguidelines-pro-bounds-constant-array-index]
-bool Maze::isClear(int Row, int Col) const { return Field[Row][Col] == ' '; }
-                                                    ^
-/home/NETID/mikec87/C++/CSS342/ass3-maze/maze.cpp:75:56: warning: do not use array subscript when the index is not an integer constant expression; use gsl::at() instead [cppcoreguidelines-pro-bounds-constant-array-index]
-bool Maze::hasVisited(int Row, int Col) const { return Field[Row][Col] == '*'; }
-                                                       ^
-/home/NETID/mikec87/C++/CSS342/ass3-maze/maze.cpp:81:43: warning: do not use array subscript when the index is not an integer constant expression; use gsl::at() instead [cppcoreguidelines-pro-bounds-constant-array-index]
-void Maze::markAsPath(int Row, int Col) { Field[Row][Col] = '*'; }
-                                          ^
-/home/NETID/mikec87/C++/CSS342/ass3-maze/maze.cpp:87:46: warning: do not use array subscript when the index is not an integer constant expression; use gsl::at() instead [cppcoreguidelines-pro-bounds-constant-array-index]
-void Maze::markAsVisited(int Row, int Col) { Field[Row][Col] = '+'; }
-                                             ^
-Suppressed 20671 warnings (20671 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 *** running myprogram
+C(4,4)
 Path: EEENNNEEEEEESEESSSEEENNNNN
 xxxxxxxxxxxxxxxxxx*x
 x     x*******xxxx*x
@@ -47,6 +16,7 @@ x xxxxxxxxxx xx****x
 xxxxxxxxxxxxxxxxxxxx
 
 
+C(4,4)
 Path: EEENNNWWWWN
 xxx*xxxxxxxxxxxxxxxx
 x  *****++++++xxxx+x
@@ -57,6 +27,7 @@ x xxxxxxxxxx xx++++x
 xxxxxxxxxxxxxxxxxxxx
 
 
+C(4,4)
 Path: EEENNNEEEEEESEESSSEEENNNNEEEEEEEEESSEENEEEEEEEESSSEEEEEEENNEEENEESSSEEEEEEEENNWWWWWNWNN
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*xxxxxxxx
 x     x*******xxxx**********x+xxxxxxxxxxxxxxxxxxxxx*xxxxxxxx
@@ -67,16 +38,49 @@ x xxxxxxxxxx xx****x          x      ********xxxx*********xx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
-Path: ENNWWNNWWWWWWWWWSSSSWWWNNNWWNWWWWWWWWWWWWSSSSS
+C(4,4)
+Path: EEENNNEEEEEESEESSSEEENNNNEEEEEEEEESSEENEEEEEEEESSSEEEEEEENNEEENEESSSEESSSSESEEEEESSWWWWWWWWNNNWWSWWWSSWWWWWWWNNNWWWWWWWWSWWNNNWSWNWSWNWSWNWSWNWSSSSSWWWNNNWWNWWWWWWSSSWWWWWWSS
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-x*************xxxx**********x+xxxxxxxxxxxxxxxxxxxxx+xxxxxxxx
-x*xxxxx+xxxxx***xx*xxxxxxxx*x+++++++++xxxxxxxxx+++x++xxxxxxx
-x*xxxxx+xxxxxxx*xx*x       ***xxxxxxx+xx++++++++x+x+++++++xx
-x*x++++++++++xx*xx*xxxxxxxxxx*x+++++++xxxxxx+xxxx+xxxxxxx+xx
-x*xxxxxxxxxx+xx****x        **x+xxxxx++++++++xxxx+++++++++xx
+x      *******xxxx**********x+xxxxxxxxxxxxxxxxxxxxx+xxxxxxxx
+x xxxxx*xxxxx***xx*xxxxxxxx*x*********xxxxxxxxx***x++xxxxxxx
+x xxxxx*xxxxxxx*xx*x       ***xxxxxxx*xx    ****x*x+++++++xx
+x x ****     xx*xx*xxxxxxxxxx x      *xxxxxx*xxxx*xxxxxxx+xx
+x xxxxxxxxxx xx****x          x xxxxx********xxxx***++++++xx
+x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*xxxxxxxx
+xxxxxxxxxxxxxxxxxx**********xxxxxxxxx              *xxxxxxxx
+x      *******xxxx**********x+xxxxxxxxxxxxxxxxxxxxx*xxxxxxxx
+x xxxxx*xxxxx***xx*xxxxxxxx*x*********xxxxxxxxx***x**xxxxxxx
+xxxxxxx*xxxxxxx*xx*x       ***xxxxxxx*xx    ****x*x ******xx
+x*******+++++xx*xx*xxxxxxxxxx+x      *xxxxxx*xxxx*xxxxxxx*xx
+x*xxxxxxxxxx+xx****x++++++++++x xxxxx********xxxx*********xx
+x*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+C(5,28)
+Path: ENNNEEEEEEEESSSEEEEEEENNEEENEESSSEESSSSESEEEEESSWWWWWWWWNNNWWSWWWSSWWWWWWWNNNWWWWWWWWSWWNNNWSWNWSWNWSWNWSWNWSSSSSWWWNNNWWNWWWWWWSSSWWWWWWSSSSEEEEEESSSWWWWWWSS
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+x             xxxx          x+xxxxxxxxxxxxxxxxxxxxx+xxxxxxxx
+x xxxxx xxxxx   xx xxxxxxxx x*********xxxxxxxxx***x++xxxxxxx
+x xxxxx xxxxxxx xx x         *xxxxxxx*xx    ****x*x+++++++xx
+x x          xx xx xxxxxxxxxx*x      *xxxxxx*xxxx*xxxxxxx+xx
+x xxxxxxxxxx xx    x        **x xxxxx********xxxx***++++++xx
+x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*xxxxxxxx
+xxxxxxxxxxxxxxxxxx**********xxxxxxxxx              *xxxxxxxx
+x      *******xxxx**********x+xxxxxxxxxxxxxxxxxxxxx*xxxxxxxx
+x xxxxx*xxxxx***xx*xxxxxxxx*x*********xxxxxxxxx***x**xxxxxxx
+xxxxxxx*xxxxxxx*xx*x       ***xxxxxxx*xx    ****x*x ******xx
+x*******+++++xx*xx*xxxxxxxxxx+x      *xxxxxx*xxxx*xxxxxxx*xx
+x*xxxxxxxxxx+xx****x++++++++++x xxxxx********xxxx*********xx
+x*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+x*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx+++++++++++++++xxxxxxxx
+x*******++++++xxxx++++++++++x+xxxxxxxxxxxxxxxxxxxxx+xxxxxxxx
+x xxxxx*xxxxx+++xx+xxxxxxxx+x+++++++++xxxxxxxxx+++x++xxxxxxx
+xxxxxxx*xxxxxxx+xx+xxxxxxxx+++xxxxxxx+xx++++++++x+x+++++++xx
+x*******+++++xx+xx+xxxxxxxxxx+x+++++++xxxxxx+xxxx+xxxxxxx+xx
+x*xxxxxxxxxx+xx++++x++++++++++x+xxxxx++++++++xxxx+++++++++xx
 x*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
 Done!
 *** cleaning up, deleting myprogram
-Fri Feb  5 22:54:09 PST 2021
+Sat Feb  6 16:09:36 PST 2021

@@ -16,7 +16,7 @@ enum CELL { CLEAR, WALL, PATH, VISITED };
 class Maze {
   /** Overloaded << operator displays current state of the maze
   with char pathways marked.
-  Precondition: None.
+  Precondition: Maze must be instantiated.
   Postcondition: Prints the maze on the screen. */
   friend ostream &operator<<(ostream &Out, const Maze &Maze);
 
@@ -55,12 +55,12 @@ public:
   void markAsVisited(int Row, int Col);
 
   /** Returns the set exit row of the maze from the maze text file.
-  Precondition: None.
+  Precondition: Maze must be instantiated.
   Postcondition: Returns an integer row location. */
   int getExitRow() const;
 
   /** Returns the set exit column of the maze from the maze text file.
-  Precondition: None.
+  Precondition: Maze must be instantiated.
   Postcondition: Returns an integer column location. */
   int getExitColumn() const;
 
